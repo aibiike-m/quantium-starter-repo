@@ -4,8 +4,8 @@ import pandas as pd
 
 app = Dash(__name__)
 
-df = pd.read_csv('processed_data.csv')
-df = df.sort_values('date')
+df = pd.read_csv("processed_data.csv")
+df = df.sort_values("date")
 
 app.layout = html.Div(
     style={"textAlign": "center", "fontFamily": "sans-serif"},
@@ -24,12 +24,12 @@ app.layout = html.Div(
             inline=True,
             style={"padding": "20px", "fontSize": "20px"},
         ),
-        dcc.Graph(id="visualisation"),
+        dcc.Graph(id="visualization"),
     ],
 )
 
 
-@app.callback(Output("visualisation", "figure"), Input("region-picker", "value"))
+@app.callback(Output("visualization", "figure"), Input("region-picker", "value"))
 def update_graph(selected_region):
     if selected_region == "all":
         filtered_df = df
